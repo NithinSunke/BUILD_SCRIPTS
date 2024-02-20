@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sh /tmp/BUILD_SCRIPTS/install_env.sh
+sh /tmp/BUILD_SCRIPTS/os_install_env.sh
 # Discover iSCSI targets
 echo "sudo iscsiadm --mode discovery --type sendtargets --portal sdsan02.scs.com"
 sudo iscsiadm --mode discovery --type sendtargets --portal sdsan02.scs.com

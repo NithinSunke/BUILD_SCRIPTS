@@ -1,4 +1,4 @@
-.  /tmp/BUILD_SCRIPTS/config/install_env.sh
+.  /tmp/BUILD_SCRIPTS/config/os_install_env.sh
 
 echo "******************************************************************************"
 echo "Set Hostname." `date`

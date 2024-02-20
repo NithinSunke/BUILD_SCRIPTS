@@ -5,7 +5,7 @@ git clone https://github.com/NithinSunke/BUILD_SCRIPTS.git
 cd /tmp
 ls
 
-.  /tmp/BUILD_SCRIPTS/config/install_env.sh 
+.  /tmp/BUILD_SCRIPTS/config/os_install_env.sh 
 
 echo "installing os packages"
 echo "+++++++++++++++++++++++"
