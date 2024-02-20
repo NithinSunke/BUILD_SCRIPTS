@@ -1,3 +1,4 @@
+#!/bin/bash
 function prepare_disk {
   MOUNT_POINT=$1
   DISK_DEVICE=$2
@@ -13,17 +14,18 @@ if [ $# -ne $EXPECTED_ARGS ]; then
 fi
 
   echo "******************************************************************************"
-  echo "Prepare ${MOUNT_POINT} disk." `date`
+  echo "Prepare ${MOUNT_POINT} disk ${DISK_DEVICE}." `date`
   echo "******************************************************************************"
   # New partition for the whole disk.
-  echo -e "n\np\n1\n\n\nw" | fdisk ${DISK_DEVICE}
+  echo -e "n\np\n1\n\n\nw" | fdisk ${2}
+  partprobe
 
   echo "create physical volume"
-  pvcreate $2
+  pvcreate ${2}p1
   pvs
 
   echo "create volume group"
-  vgcreate $3 $3
+  vgcreate $3 ${2}p1
   vgs
 
   echo "creating logical volume"
@@ -34,11 +36,11 @@ fi
   mkfs.xfs -f  /dev/mapper/${3}-${4}
 
   # Mount it.
-  UUID=`blkid -o value /dev/mapper/${3}-${4} | grep -v xfs`
   mkdir ${MOUNT_POINT}
-  echo "UUID=${UUID}  ${MOUNT_POINT}    xfs    defaults 1 2" >> /etc/fstab
+  echo "/dev/mapper/${3}-${4}  ${MOUNT_POINT}    xfs    defaults 1 2" >> /etc/fstab
   mount ${MOUNT_POINT}
 }
 
-prepare_disk /h01 /dev/mapper/mpathb dbh-vg dbh-lvh 24.98G
-prepare_disk /d02 /dev/mapper/mpathc dbf-vg dbh-lvh 24.98G
+prepare_disk /h02 /dev/mapper/dbh01 dbhm_vg dbhm_lvh 24.98G
+prepare_disk /d02 /dev/mapper/dbf01 dbfs_vg dbfs_lvh 24.98G
+
