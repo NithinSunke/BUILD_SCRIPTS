@@ -15,4 +15,5 @@ mkdir -p /h01/tmp
 #unset CLASSPATH
 #${SOFTWARE_DIR}/em13400_linux64.bin -silent -responseFile /nfsshare/vagrant/BUILD_SCRIPTS/oms_install.rsp  -J-Djava.io.tmpdir=/h01/tmp/
 
-#sh ${MW_HOME}/allroot.sh
+sh ${MW_HOME}/allroot.sh
+

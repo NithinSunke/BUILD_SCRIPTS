@@ -41,6 +41,6 @@ fi
   mount ${MOUNT_POINT}
 }
 
-prepare_disk /h02 /dev/mapper/dbh01 dbhm_vg dbhm_lvh 24.98G
-prepare_disk /d02 /dev/mapper/dbf01 dbfs_vg dbfs_lvh 24.98G
-
+#prepare_disk /h01 /dev/mapper/dbh1 dbhm_vg dbhm_lvh 24.98G
+#prepare_disk /d01 /dev/mapper/dbf1 dbfs_vg dbfs_lvh 24.98G
+prepare_disk /o01 /dev/mapper/oms1 dbfs_oms oms_lvh 79.98G

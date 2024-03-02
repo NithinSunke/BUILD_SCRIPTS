@@ -3,7 +3,7 @@
 echo "******************************************************************************"
 echo "Create environment script." `date`
 echo "******************************************************************************"
-cat > ${SCRIPTS_DIR}/setEnv.sh <<EOF
+cat > ${SCRIPTS_DIR}/${ORACLE_SID}.env <<EOF
 # Regular settings.
 export TMP=/tmp
 export TMPDIR=\$TMP
@@ -26,20 +26,21 @@ export ORA_INVENTORY=${ORA_INVENTORY}
 EOF
 
 
+
 echo "******************************************************************************"
 echo "Add it to the .bash_profile." `date`
 echo "******************************************************************************"
-echo ". ${SCRIPTS_DIR}/setEnv.sh" >> /home/oracle/.bash_profile
+echo ". ${SCRIPTS_DIR}/${ORACLE_SID}.env" >> /home/oracle/.bash_profile
 
 
 echo "******************************************************************************"
 echo "Create start/stop scripts." `date`
 echo "******************************************************************************"
-. ${SCRIPTS_DIR}/setEnv.sh
+. ${SCRIPTS_DIR}/${ORACLE_SID}.env
 
 cat > ${SCRIPTS_DIR}/start_all.sh <<EOF
 #!/bin/bash
-. ${SCRIPTS_DIR}/setEnv.sh
+. ${SCRIPTS_DIR}/${ORACLE_SID}.env
 
 export ORAENV_ASK=NO
 . oraenv
@@ -51,7 +52,7 @@ EOF
 
 cat > ${SCRIPTS_DIR}/stop_all.sh <<EOF
 #!/bin/bash
-. ${SCRIPTS_DIR}/setEnv.sh
+. ${SCRIPTS_DIR}/${ORACLE_SID}.env
 
 export ORAENV_ASK=NO
 . oraenv

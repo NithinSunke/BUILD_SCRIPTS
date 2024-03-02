@@ -11,4 +11,5 @@ echo "Prepare environment and install the software." `date`
 echo "******************************************************************************"
 
 #su - oracle -c 'sh /nfsshare/vagrant/BUILD_SCRIPTS/oms_db_param_settings.sh'
-su - oracle -c 'sh /nfsshare/vagrant/BUILD_SCRIPTS/oms_13.4_install.sh'
+#su - oracle -c 'sh /nfsshare/vagrant/BUILD_SCRIPTS/oms_13.4_install.sh'
+su - oracle -c 'sh /nfsshare/vagrant/BUILD_SCRIPTS/13cr4_config_setup.sh'
